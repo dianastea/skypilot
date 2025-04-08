@@ -167,6 +167,9 @@ def show_cost_report_table(cluster_records: List[_ClusterCostReportRecord],
         StatusColumn('STATUS',
                      _get_status_for_cost_report,
                      show_by_default=True),
+        StatusColumn('ZONE',
+                     _get_zone_for_cost_report,
+                     show_by_default=True),
         StatusColumn('COST/hr',
                      _get_price_for_cost_report,
                      show_by_default=True),
@@ -312,6 +315,16 @@ def _get_resources_for_cost_report(
                      f'{launched_resource_str}')
 
     return resources_str
+
+
+def _get_zone_for_cost_report(
+    cluster_cost_report_record: _ClusterCostReportRecord) -> str:
+    launched_resources = cluster_cost_report_record['resources']
+    zone = launched_resources.zone
+
+    zone_str = (f'{zone}')
+
+    return zone_str
 
 
 def _get_price_for_cost_report(
