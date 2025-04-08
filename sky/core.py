@@ -323,7 +323,7 @@ def cost_report() -> List[Dict[str, Any]]:
         cluster_report['cloud'] = str(cluster_report['resources'].cloud)
         cluster_report['accelerators'] = cluster_report[
             'resources'].accelerators
-
+        cluster_report['zone'] = cluster_report['resources'].zone
     return cluster_reports
 
 
